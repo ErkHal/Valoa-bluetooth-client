@@ -1,0 +1,59 @@
+<!--
+  Generated template for the ColorChooserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>Color Chooser</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="lightbulbContainer">
+    <ion-icon class="colorPreview" name="bulb"
+     [ngStyle]="setPreviewColor()"> 
+    </ion-icon>
+  </div>
+  <ion-item>
+      <ion-range min="0" max="100"
+                debounce="250" step="1" [(ngModel)]="brightness">
+        <ion-label class="white" range-left>0</ion-label>
+        <ion-label class="white" range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+  <br/>
+  <ion-item>
+    <ion-range min="0" max="255"
+              debounce="250" step="1" [(ngModel)]="red">
+      <ion-icon class="red" small range-left name="aperture"></ion-icon>
+      <ion-icon class="red" range-right name="aperture"></ion-icon>
+    </ion-range>
+  </ion-item>
+  <br/>
+  <ion-item>
+    <ion-range min="0" max="255"
+              debounce="250" step="1" [(ngModel)]="green">
+      <ion-icon class="green" small range-left name="aperture"></ion-icon>
+      <ion-icon class="green" range-right name="aperture"></ion-icon>
+    </ion-range>
+  </ion-item>
+  <br/>
+  <ion-item>
+    <ion-range min="0" max="255"
+              debounce="250" step="1" [(ngModel)]="blue">
+      <ion-icon class="blue" small range-left name="aperture"></ion-icon>
+      <ion-icon class="blue" range-right name="aperture"></ion-icon>
+    </ion-range>
+  </ion-item>
+  <br/>
+  <button ion-button block="true" class="sendButton"
+  [ngStyle]="setPreviewColor()" (click)="sendColorCode()">
+    Set Color
+  </button>
+  
+</ion-content>

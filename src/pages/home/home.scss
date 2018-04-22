@@ -1,3 +1,20 @@
 page-home {
+    
+    .content {
+        background-color: color($colors, 'dark');
+        color: white;
 
+        .item {
+            margin: 1.5rem 0 1.5rem 0;
+            background-color: $slider-bg;
+
+            .item-inner {
+                border: none;
+
+                p {
+                    color: white;
+                }
+            }
+        }
+    }
 }
