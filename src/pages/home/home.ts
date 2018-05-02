@@ -35,6 +35,7 @@ export class HomePage {
   ionViewDidLoad() {
     this.lightController.enableBluetooth()
       .then( result => {
+        //this.navCtrl.push(ColorChooserPage);
         this.lightController.bluetoothIsConnected()
           .then(result => {
             this.navCtrl.push(ColorChooserPage);

@@ -6,9 +6,14 @@ page-color-chooser {
     .content {
         background-color: $dark;
 
+        h4 {
+            text-align: center;
+            color : gray;
+        }
+
         .lightbulbContainer {
             text-align: center;
-            font-size: 4rem;
+            font-size: 5rem;
             width: 100%;
             height: 7rem;
         }
@@ -39,6 +44,7 @@ page-color-chooser {
 
         .sendButton {
             background-color: $slider-bg;
+            height: 5rem;
 
             &:hover {
                 background-color: lighten($slider-bg, 15);

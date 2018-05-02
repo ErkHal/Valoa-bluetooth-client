@@ -19,6 +19,7 @@
      [ngStyle]="setPreviewColor()"> 
     </ion-icon>
   </div>
+  <h4>Brightness</h4>
   <ion-item>
       <ion-range min="0" max="100"
                 debounce="250" step="1" [(ngModel)]="brightness">
@@ -26,7 +27,7 @@
         <ion-label class="white" range-right>100</ion-label>
       </ion-range>
     </ion-item>
-  <br/>
+  <h4>Colors</h4>
   <ion-item>
     <ion-range min="0" max="255"
               debounce="250" step="1" [(ngModel)]="red">
@@ -52,8 +53,7 @@
   </ion-item>
   <br/>
   <button ion-button block="true" class="sendButton"
-  [ngStyle]="setPreviewColor()" (click)="sendColorCode()">
-    Set Color
+    [ngStyle]="setPreviewColor()" (click)="sendColorCode()">
+      Set Color
   </button>
-  
 </ion-content>
