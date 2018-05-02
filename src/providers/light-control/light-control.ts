@@ -19,6 +19,10 @@ export class LightControlProvider {
     return this.bt.enable();
   }
 
+  bluetoothIsConnected() {
+    return this.bt.isConnected();
+  }
+
   //Returns Promise and eventually all bonded devices.
   getBondedDevices() {
     return this.bt.list();

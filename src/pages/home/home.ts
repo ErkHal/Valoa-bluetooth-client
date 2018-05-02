@@ -35,7 +35,12 @@ export class HomePage {
   ionViewDidLoad() {
     this.lightController.enableBluetooth()
       .then( result => {
-        this.getBondedDevices();
+        this.lightController.bluetoothIsConnected()
+          .then(result => {
+            this.navCtrl.push(ColorChooserPage);
+          }).catch(err => {
+            this.getBondedDevices();
+          });
       }).catch( err => {
         console.log(err);
         this.connectionError = true;
@@ -43,7 +48,7 @@ export class HomePage {
       })
   }
 
-  //Connects to given MAC address
+  //Connects to chosen MAC address
   connectToDevice(address: string) {
     this.connectionError = false;
     this.message = "Connecting to " + address;
