@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LightControlProvider } from '../../providers/light-control/light-control';
 
 /*
   Author: Erkki Halinen 2018
@@ -26,7 +27,9 @@ export class ColorChooserPage {
     'color' : "rgb(" + this.red + ',' + this.green + ',' + this.blue + ");"
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private lightControl: LightControlProvider) {
   }
 
   ionViewDidLoad() {
@@ -35,11 +38,11 @@ export class ColorChooserPage {
 
   //Send color code to provider
   sendColorCode() {
-    let colorData: string = 
-      this.red + "," + this.green + "," + this.blue;
-    
-      console.log(colorData);
-      
+
+    let colors = this.calculateColorValues();
+
+      console.log(colors);
+      this.lightControl.sendColorCode(colors);
     
   }
 
@@ -53,6 +56,19 @@ export class ColorChooserPage {
       Math.floor(this.blue * calculatedBrightness) + ")"
 
     return this.previewColor;
+  }
+
+  calculateColorValues(): number[] {
+
+    let calculatedBrightness = (this.brightness * 0.01);
+
+    let redValue = Math.floor(this.red * calculatedBrightness);
+    let greenValue = Math.floor(this.green * calculatedBrightness);
+    let blueValue = Math.floor(this.blue * calculatedBrightness);
+
+    let colors = [redValue, greenValue, blueValue];
+
+    return colors;
   }
 
 }

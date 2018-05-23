@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { ValueTransformer } from '@angular/compiler/src/util';
 
 /*
   Author: Erkki Halinen 2018
@@ -30,7 +31,7 @@ export class LightControlProvider {
 
   //Connect to MAC address using Cordova Insecure connection
   connect(address: string) {
-    return this.bt.connectInsecure(address);
+    return this.bt.connect(address);
   }
 
   /* 
@@ -38,8 +39,11 @@ export class LightControlProvider {
   The string contains numerical values from 0 - 255 for each color channel
   Example data: 255,255,255 <- This would set color to full brightness white.
   */
-  sendColorCode(color: string) {
-    return this.bt.write(color);
-  }
+  sendColorCode(colors: number[]) {
 
+    let colorValueCommand = "<" + colors[0] + "," + colors[1] + ","
+    + colors[2] + ">";
+    console.log(colorValueCommand);
+    return this.bt.write(colorValueCommand);
+  }
 }
